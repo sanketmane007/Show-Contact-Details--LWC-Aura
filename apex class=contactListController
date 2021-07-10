@@ -1,0 +1,15 @@
+public class contactListController {
+    // method must be @AuraEnabled
+    
+    @AuraEnabled
+    //Method must be static and return anything 
+    public static List<Contact> getContactList(){
+        List<Contact> contactList=new List<Contact>([SELECT Id,FirstName,LastName,Name,Email,Phone From Contact WHERE Email !=null limit 10]);
+        //this is same as upper line
+        //return [SELECT Id,Name,Email,Phone From Contact WHERE Email !=null];
+    	return contactList;
+    
+    }   
+    
+    
+}
