@@ -1,0 +1,44 @@
+<aura:component controller="contactListController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <!--    <aura:attribute name="mapvar" type="List"></aura:attribute>      -->
+    <!-- 
+    <aura:iteration items="{!v.mapvar}" var="map">
+     key:-{!map.key} and value:{!map.value} <br/>
+    </aura:iteration>
+    <lightning:button label="Create Map" onclick="{!c.doCreateMap}"></lightning:button>
+    -->
+    <!--Contact List Create Attribute  -->
+    <aura:attribute name="contactList" type="Contact[]"></aura:attribute>
+    
+    <!-- When you want call client or server side controller  -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"></aura:handler>
+    
+    <!-- slds-p used to padding  -->
+    <div class="slds-p-around_small">
+        
+        <!-- To create Grid view 3  -->
+        <!--Wrap use to automatically view of mobile of site -->
+        <div class="slds-grid slds-wrap">
+            
+            <aura:iteration items="{!v.contactList}" var="con">
+                
+                <!--here are 1 of 3 means one row 3 records shows-->
+                <div class="slds-col slds-size_1-of-3 slds-p-around_small">
+                    
+                    <lightning:card title="{!con.LastName}" footer="{!con.Email}" iconName="action:add_contact">
+                        <!--Show the all using aur attribute   -->
+                        <aura:set attribute="actions">
+                            <lightning:button label="View Details" variant="brand"> </lightning:button>
+                        </aura:set>
+                        
+                        <p class="slds-p-horizontal_small">
+                            {!con.FirstName} &nbsp; &nbsp; {!con.LastName}	<br/>
+                            {!con.Phone})
+                        </p>
+                    </lightning:card>
+                    
+                </div>
+            </aura:iteration>
+        </div>
+    </div>
+    
+</aura:component>
